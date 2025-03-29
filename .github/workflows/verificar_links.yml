@@ -25,4 +25,4 @@ jobs:
         run: npm install -g linkinator
 
       - name: Verificar enlaces rotos
-        run: linkinator weblaunch/index.html --fail-on-error
+        run: linkinator index.html --fail-on-error
