@@ -1,3 +1,4 @@
+#validar
 name: Validar HTML y CSS
 
 on:
@@ -24,11 +25,19 @@ jobs:
       - name: Instalar W3C Validator
         run: npm install -g w3cjs
 
-      - name: Validar HTML con W3C Validator
-        run: w3cjs index.html
+      - name: Validar todos los HTML con W3C Validator
+        run: |
+          for file in $(find . -name "*.html"); do
+            echo "Validando $file..."
+            w3cjs "$file"
+          done
 
       - name: Instalar CSS Lint
         run: npm install -g csslint
 
-      - name: Validar CSS con CSS Lint
-        run: csslint style.css
+      - name: Validar todos los CSS con CSS Lint
+        run: |
+          for file in $(find . -name "*.css"); do
+            echo "Validando $file..."
+            csslint "$file"
+          done
